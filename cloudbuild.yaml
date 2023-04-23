@@ -3,3 +3,19 @@ steps:
     id: build
     entrypoint: gradle
     args: ['-p', 'data-proxy', 'shadowJar']
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk:426.0.0-alpine
+    args:
+      - gcloud
+      - functions
+      - deploy
+      - predictions-data-proxy
+      - --gen2
+      - --ingress-settings=internal-only
+      - --entry-point=com.github.ajablonski.Entrypoint
+      - --source=data-proxy/build/libs
+      - --region=us-central1
+      - --trigger-http
+      - --runtime=java17
+      - --max-instances=1
+    waitFor:
+      - build
