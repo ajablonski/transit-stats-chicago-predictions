@@ -16,3 +16,17 @@ provider "google" {
   project = "transit-stats-chicago"
   region  = "us-central1"
 }
+
+resource "google_cloudbuild_trigger" "cloudbuild_trigger" {
+  name = "predictions-data-proxy-pipeline-build"
+  include_build_logs = "INCLUDE_BUILD_LOGS_WITH_STATUS"
+  filename = "cloudbuild.yaml"
+
+  github {
+    name = "transit-stats-chicago-predictions"
+    owner = "ajablonski"
+    push {
+      branch = "^main$"
+    }
+  }
+}
