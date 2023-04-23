@@ -1,0 +1,5 @@
+steps:
+  - name: gradle:8.1.1-jdk17-alpine
+    id: build
+    entrypoint: gradle
+    args: ['-p', 'data-proxy', 'shadowJar']
