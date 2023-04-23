@@ -1,0 +1,69 @@
+swagger: "2.0"
+info:
+  title: Predictions Data Proxy API
+  description: |
+    Service that proxies CTA APIs for simple and uniform representations of bus and train predictions
+  version: 0.0.1
+
+schemes:
+  - https
+
+produces:
+  - application/json
+
+security:
+  - ApiKeyAuth: []
+
+securityDefinitions:
+  ApiKeyAuth:
+    type: apiKey
+    in: query
+    name: api_key
+
+definitions:
+  Predictions:
+    type: object
+    properties:
+      predictions:
+        type: array
+        description: An array of predicted arrival times at pre-designated stops
+        items:
+          type: object
+          properties:
+            route:
+              description: Short route identifier as queried
+              type: string
+            destination:
+              description: Ultimate destination for trips on this route
+              type: string
+            arrivalTimes:
+              type: array
+              items:
+                type: object
+                properties:
+                  time:
+                    description: Time (in minutes) until arrival at designated stops
+                    type: integer
+                  realTimeTracked:
+                    description: Whether the time estimate represents a live-tracked vehicle or merely a scheduled one
+                    type: boolean
+
+paths:
+  /predictions:
+    get:
+      description: Return predictions for the provided routes
+      operationId: predictionsGet
+      x-google-backend:
+        address: https://predictions-data-proxy-ui5vhr5hla-uc.a.run.app
+      parameters:
+        - name: routes
+          in: query
+          type: array
+          items:
+            type: string
+
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Predictions'        

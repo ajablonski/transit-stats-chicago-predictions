@@ -10,7 +10,7 @@ steps:
       - deploy
       - predictions-data-proxy
       - --gen2
-      - --ingress-settings=internal-only
+      - --ingress-settings=all
       - --entry-point=com.github.ajablonski.Entrypoint
       - --source=data-proxy/build/libs
       - --region=us-central1
