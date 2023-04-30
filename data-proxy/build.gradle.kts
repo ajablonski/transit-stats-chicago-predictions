@@ -19,8 +19,8 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
 
     testImplementation("com.google.cloud.functions:functions-framework-api:1.0.4")
-    testImplementation("org.junit.jupiter:junit-jupiter:5.9.2")
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.2")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.9.3")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.3")
     testImplementation("org.assertj:assertj-core:3.24.2")
     testImplementation("io.mockk:mockk:1.13.5")
 }
