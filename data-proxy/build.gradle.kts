@@ -14,7 +14,7 @@ dependencies {
     compileOnly("com.google.cloud.functions:functions-framework-api:1.0.4")
 
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
-    implementation(platform("com.google.cloud:libraries-bom:26.13.0"))
+    implementation(platform("com.google.cloud:libraries-bom:26.15.0"))
 
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
 
