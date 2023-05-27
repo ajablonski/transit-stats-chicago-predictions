@@ -1,0 +1,44 @@
+{
+  "bustime-response": {
+    "prd": [
+      {
+        "tmstmp": "20230521 11:26",
+        "typ": "A",
+        "stpnm": "Ridge & Wayne",
+        "stpid": "11475",
+        "vid": "8245",
+        "dstp": 1503,
+        "rt": "84",
+        "rtdd": "84",
+        "rtdir": "Westbound",
+        "des": "Caldwell/Central",
+        "prdtm": "20230521 11:31",
+        "tablockid": "84 -401",
+        "tatripid": "1032547",
+        "origtatripno": "238707538",
+        "dly": true,
+        "prdctdn": "DLY",
+        "zone": ""
+      },
+      {
+        "tmstmp": "20230521 11:26",
+        "typ": "A",
+        "stpnm": "Ridge & Wayne",
+        "stpid": "11475",
+        "vid": "1015",
+        "dstp": 17090,
+        "rt": "84",
+        "rtdd": "84",
+        "rtdir": "Westbound",
+        "des": "Caldwell/Central",
+        "prdtm": "20230521 11:53",
+        "tablockid": "84 -404",
+        "tatripid": "1032552",
+        "origtatripno": "238707524",
+        "dly": false,
+        "prdctdn": "27",
+        "zone": ""
+      }
+    ]
+  }
+}

@@ -1,19 +1,141 @@
 package com.github.ajablonski
 
+import com.github.ajablonski.client.BusTrackerResponse
+import com.github.ajablonski.client.Prediction
+import com.github.ajablonski.client.TrainTrackerResponse
+import com.github.ajablonski.model.ArrivalTime
+import com.github.ajablonski.model.DestinationPrediction
+import com.github.ajablonski.model.RoutePrediction
+import com.github.ajablonski.server.PredictionResponse
 import com.google.cloud.functions.HttpFunction
 import com.google.cloud.functions.HttpRequest
 import com.google.cloud.functions.HttpResponse
+import kotlinx.datetime.toJavaLocalDateTime
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
+import org.apache.hc.core5.http.ContentType
+import org.apache.hc.core5.net.URIBuilder
+import java.net.http.HttpRequest as JHttpRequest
+import java.net.http.HttpResponse as JHttpResponse
+import java.net.http.HttpClient
+import java.time.temporal.ChronoUnit
 
-class Entrypoint : HttpFunction {
+class Entrypoint(
+    private val httpClient: HttpClient = HttpClient.newHttpClient(),
+    private val keyProvider: KeyProvider = FileSecretKeyProvider()
+) : HttpFunction {
+
+    private val json = Json { ignoreUnknownKeys = true }
+
     override fun service(request: HttpRequest?, response: HttpResponse?) {
         response?.run {
-            setContentType("application/json")
+            val requestedRoutes = request?.queryParameters?.get("routes")?.flatMap { it.split(",") }.orEmpty()
+            val busRoutes = requestedRoutes.filter(busRouteToStopMap::containsKey)
+            val busStops = requestedRoutes.flatMap { busRouteToStopMap[it].orEmpty() }
+
+            val predictedBusArrivalTimes = getBusResponses(busRoutes, busStops)
+
+            val trainStops =
+                requestedRoutes.flatMap { trainRouteToStationMap.entries.filter { entry -> entry.key == it } }
+            val predictedTrainArrivalTimes = trainStops.map {
+                getTrainResponse(it.key, it.value)
+            }
+
+            setContentType(ContentType.APPLICATION_JSON.mimeType)
             setStatusCode(200)
-            writer.write("""
-                {
-                    "response": "Hello World!"
-                }
-            """.trimIndent())
+            writer.write(
+                json.encodeToString(
+                    PredictionResponse(
+                        predictedTrainArrivalTimes + predictedBusArrivalTimes
+                    )
+                )
+            )
         }
     }
+
+    private fun getTrainResponse(trainRoute: String, trainStationId: String): RoutePrediction {
+        val uri = URIBuilder(Constants.trainTrackerBaseUrl)
+            .addParameter("key", keyProvider.getTrainTrackerApiKey())
+            .addParameter("mapid", trainStationId)
+            .addParameter("rt", trainRoute)
+            .addParameter("outputType", "JSON")
+            .build()
+
+        val trainTrackerRequest = JHttpRequest.newBuilder().uri(uri).GET().build()
+        val responseBody = httpClient
+            .send(trainTrackerRequest, JHttpResponse.BodyHandlers.ofString())
+            .body()
+
+        return RoutePrediction(trainRoute, json.decodeFromString<TrainTrackerResponse>(responseBody)
+            .ctaData
+            .etas
+            .groupBy { it.destination }
+            .map { (destination, etas) ->
+                DestinationPrediction(destination, etas.map {
+                    val minutesToArrival = ChronoUnit.MINUTES.between(
+                        it.predictionTime.toJavaLocalDateTime(),
+                        it.arrivalTime.toJavaLocalDateTime()
+                    ).toInt()
+                    ArrivalTime(minutesToArrival, it.isScheduled != "1", it.isDelayed == "1")
+                })
+            })
+    }
+
+    private fun getBusResponses(busRouteIds: List<String>, busStopIds: List<String>): List<RoutePrediction> {
+        if (busRouteIds.isEmpty() || busStopIds.isEmpty()) {
+            return emptyList()
+        }
+        val uri = URIBuilder(Constants.busTrackerBaseUrl)
+            .addParameter("key", keyProvider.getBusTrackerApiKey())
+            .addParameter("stpid", busStopIds.joinToString(","))
+            .addParameter("format", "json")
+            .build()
+
+
+        val busTrackerRequest = JHttpRequest.newBuilder().uri(uri).GET().build()
+        val responseBody = httpClient
+            .send(busTrackerRequest, JHttpResponse.BodyHandlers.ofString())
+            .body()
+        return json.decodeFromString<BusTrackerResponse>(responseBody)
+            .busTimeResponse
+            .predictions
+            .groupBy { it.route }
+            .filter { (route, _) -> busRouteIds.contains(route) }
+            .map { (route, predictions) ->
+                RoutePrediction(
+                    route,
+                    predictions
+                        .groupBy { it.destination }
+                        .map { (destination, predictions) ->
+                            DestinationPrediction(
+                                destination,
+                                predictions.map {
+                                    ArrivalTime(
+                                        it.predictionTime.toIntOrNull(),
+                                        true,
+                                        delayed = it.isDelayed
+                                    )
+                                })
+                        }
+                )
+            }
+    }
+
+    companion object Entrypoint {
+        private val busRouteToStopMap: Map<String, List<String>> = mapOf(
+            "84" to listOf("11475"),
+            "22" to listOf("14792", "14786"),
+            "50" to listOf("1802"),
+            "92" to listOf("5425"),
+            "36" to listOf("5338"),
+            "147" to listOf("1038"),
+            "136" to listOf("1038")
+        )
+
+        private val trainRouteToStationMap: Map<String, String> = mapOf(
+            "Red" to "41380",
+            "Brn" to "40090"
+        )
+    }
 }
+

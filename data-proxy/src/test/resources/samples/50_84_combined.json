@@ -1,0 +1,63 @@
+{
+  "bustime-response": {
+    "prd": [
+      {
+        "tmstmp": "20230526 12:36",
+        "typ": "A",
+        "stpnm": "Clark & Bryn Mawr",
+        "stpid": "1802",
+        "vid": "1893",
+        "dstp": 903,
+        "rt": "50",
+        "rtdd": "50",
+        "rtdir": "Southbound",
+        "des": "35th/Archer Orange Line",
+        "prdtm": "20230526 12:45",
+        "tablockid": "50 -510",
+        "tatripid": "1028554",
+        "origtatripno": "238771261",
+        "dly": false,
+        "prdctdn": "9",
+        "zone": ""
+      },
+      {
+        "tmstmp": "20230526 12:36",
+        "typ": "A",
+        "stpnm": "Clark & Bryn Mawr",
+        "stpid": "1802",
+        "vid": "1795",
+        "dstp": 10042,
+        "rt": "50",
+        "rtdd": "50",
+        "rtdir": "Southbound",
+        "des": "35th/Archer Orange Line",
+        "prdtm": "20230526 13:05",
+        "tablockid": "50 -502",
+        "tatripid": "1067778",
+        "origtatripno": "238771356",
+        "dly": false,
+        "prdctdn": "28",
+        "zone": ""
+      },
+      {
+        "tmstmp": "20230526 12:36",
+        "typ": "A",
+        "stpnm": "Ridge & Wayne",
+        "stpid": "11475",
+        "vid": "8367",
+        "dstp": 15298,
+        "rt": "84",
+        "rtdd": "84",
+        "rtdir": "Westbound",
+        "des": "Caldwell/Central",
+        "prdtm": "20230526 13:05",
+        "tablockid": "84 -410",
+        "tatripid": "88356695",
+        "origtatripno": "238703822",
+        "dly": false,
+        "prdctdn": "29",
+        "zone": ""
+      }
+    ]
+  }
+}

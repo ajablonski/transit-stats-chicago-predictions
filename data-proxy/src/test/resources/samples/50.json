@@ -1,0 +1,25 @@
+{
+  "bustime-response": {
+    "prd": [
+      {
+        "tmstmp": "20230526 12:33",
+        "typ": "A",
+        "stpnm": "Clark & Bryn Mawr",
+        "stpid": "1802",
+        "vid": "1893",
+        "dstp": 903,
+        "rt": "50",
+        "rtdd": "50",
+        "rtdir": "Southbound",
+        "des": "35th/Archer Orange Line",
+        "prdtm": "20230526 12:45",
+        "tablockid": "50 -510",
+        "tatripid": "1028554",
+        "origtatripno": "238771261",
+        "dly": false,
+        "prdctdn": "12",
+        "zone": ""
+      }
+    ]
+  }
+}

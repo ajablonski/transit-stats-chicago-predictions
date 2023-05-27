@@ -1,0 +1,30 @@
+{
+  "ctatt": {
+    "tmst": "2023-05-26T13:22:56",
+    "errCd": "0",
+    "errNm": null,
+    "eta": [
+      {
+        "staId": "41380",
+        "stpId": "30267",
+        "staNm": "Bryn Mawr",
+        "stpDe": "Service toward Howard",
+        "rn": "915",
+        "rt": "Red",
+        "destSt": "30173",
+        "destNm": "Howard",
+        "trDr": "1",
+        "prdt": "2023-05-26T13:22:13",
+        "arrT": "2023-05-26T13:24:13",
+        "isApp": "0",
+        "isSch": "1",
+        "isDly": "0",
+        "isFlt": "0",
+        "flags": null,
+        "lat": "41.97345",
+        "lon": "-87.65853",
+        "heading": "358"
+      }
+    ]
+  }
+}

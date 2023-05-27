@@ -1,0 +1,82 @@
+{
+  "bustime-response": {
+    "prd": [
+      {
+        "tmstmp": "20230526 13:02",
+        "typ": "A",
+        "stpnm": "Sheridan & Bryn Mawr",
+        "stpid": "1038",
+        "vid": "4133",
+        "dstp": 2239,
+        "rt": "151",
+        "rtdd": "151",
+        "rtdir": "Southbound",
+        "des": "Union Station",
+        "prdtm": "20230526 13:07",
+        "tablockid": "151 -511",
+        "tatripid": "250",
+        "origtatripno": "238769761",
+        "dly": false,
+        "prdctdn": "4",
+        "zone": ""
+      },
+      {
+        "tmstmp": "20230526 13:02",
+        "typ": "A",
+        "stpnm": "Sheridan & Bryn Mawr",
+        "stpid": "1038",
+        "vid": "4363",
+        "dstp": 7274,
+        "rt": "147",
+        "rtdd": "147",
+        "rtdir": "Southbound",
+        "des": "Congress Plaza",
+        "prdtm": "20230526 13:14",
+        "tablockid": "147 -507",
+        "tatripid": "1064020",
+        "origtatripno": "238771771",
+        "dly": false,
+        "prdctdn": "11",
+        "zone": ""
+      },
+      {
+        "tmstmp": "20230526 13:02",
+        "typ": "A",
+        "stpnm": "Sheridan & Bryn Mawr",
+        "stpid": "1038",
+        "vid": "1521",
+        "dstp": 10569,
+        "rt": "92",
+        "rtdd": "92",
+        "rtdir": "Westbound",
+        "des": "Jefferson Park Blue Line",
+        "prdtm": "20230526 13:19",
+        "tablockid": "92 -405",
+        "tatripid": "1084061",
+        "origtatripno": "238702863",
+        "dly": false,
+        "prdctdn": "16",
+        "zone": ""
+      },
+      {
+        "tmstmp": "20230526 13:02",
+        "typ": "A",
+        "stpnm": "Sheridan & Bryn Mawr",
+        "stpid": "1038",
+        "vid": "4387",
+        "dstp": 17217,
+        "rt": "147",
+        "rtdd": "147",
+        "rtdir": "Southbound",
+        "des": "Congress Plaza",
+        "prdtm": "20230526 13:27",
+        "tablockid": "147 -551",
+        "tatripid": "1064021",
+        "origtatripno": "238771772",
+        "dly": false,
+        "prdctdn": "25",
+        "zone": ""
+      }
+    ]
+  }
+}
