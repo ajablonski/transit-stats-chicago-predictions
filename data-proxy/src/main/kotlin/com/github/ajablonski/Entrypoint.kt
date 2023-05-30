@@ -37,7 +37,7 @@ class Entrypoint(
 
             val trainStops =
                 requestedRoutes.flatMap { trainRouteToStationMap.entries.filter { entry -> entry.key == it } }
-            val predictedTrainArrivalTimes = trainStops.map {
+            val predictedTrainArrivalTimes = trainStops.associate {
                 getTrainResponse(it.key, it.value)
             }
 
@@ -53,7 +53,7 @@ class Entrypoint(
         }
     }
 
-    private fun getTrainResponse(trainRoute: String, trainStationId: String): RoutePrediction {
+    private fun getTrainResponse(trainRoute: String, trainStationId: String): Pair<String, RoutePrediction> {
         val uri = URIBuilder(Constants.trainTrackerBaseUrl)
             .addParameter("key", keyProvider.getTrainTrackerApiKey())
             .addParameter("mapid", trainStationId)
@@ -66,24 +66,25 @@ class Entrypoint(
             .send(trainTrackerRequest, JHttpResponse.BodyHandlers.ofString())
             .body()
 
-        return RoutePrediction(trainRoute, json.decodeFromString<TrainTrackerResponse>(responseBody)
+        return trainRoute to RoutePrediction(trainRoute, json.decodeFromString<TrainTrackerResponse>(responseBody)
             .ctaData
             .etas
             .groupBy { it.destination }
             .map { (destination, etas) ->
-                DestinationPrediction(destination, etas.map {
+                destination to DestinationPrediction(destination, etas.map {
                     val minutesToArrival = ChronoUnit.MINUTES.between(
                         it.predictionTime.toJavaLocalDateTime(),
                         it.arrivalTime.toJavaLocalDateTime()
                     ).toInt()
                     ArrivalTime(minutesToArrival, it.isScheduled != "1", it.isDelayed == "1")
                 })
-            })
+            }.toMap()
+        )
     }
 
-    private fun getBusResponses(busRouteIds: List<String>, busStopIds: List<String>): List<RoutePrediction> {
+    private fun getBusResponses(busRouteIds: List<String>, busStopIds: List<String>): Map<String, RoutePrediction> {
         if (busRouteIds.isEmpty() || busStopIds.isEmpty()) {
-            return emptyList()
+            return emptyMap()
         }
         val uri = URIBuilder(Constants.busTrackerBaseUrl)
             .addParameter("key", keyProvider.getBusTrackerApiKey())
@@ -102,12 +103,12 @@ class Entrypoint(
             .groupBy { it.route }
             .filter { (route, _) -> busRouteIds.contains(route) }
             .map { (route, predictions) ->
-                RoutePrediction(
+                route to RoutePrediction(
                     route,
                     predictions
                         .groupBy { it.destination }
                         .map { (destination, predictions) ->
-                            DestinationPrediction(
+                            destination to DestinationPrediction(
                                 destination,
                                 predictions.map {
                                     ArrivalTime(
@@ -117,8 +118,10 @@ class Entrypoint(
                                     )
                                 })
                         }
+                        .toMap()
                 )
             }
+            .toMap()
     }
 
     companion object Entrypoint {

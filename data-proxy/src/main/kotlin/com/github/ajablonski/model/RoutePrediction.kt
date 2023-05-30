@@ -5,7 +5,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class RoutePrediction(
     val route: String,
-    val destinationPrediction: List<DestinationPrediction>
+    val destinationPrediction: Map<String, DestinationPrediction>
 )
 
 @Serializable

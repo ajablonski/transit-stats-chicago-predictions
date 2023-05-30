@@ -49,11 +49,11 @@ class EntrypointTest() {
         val result = Json.decodeFromString<PredictionResponse>(outputWriter.toString())
 
         val expectedResponse = PredictionResponse(
-            listOf(
-                RoutePrediction(
+            mapOf(
+                "84" to RoutePrediction(
                     route = "84",
-                    listOf(
-                        DestinationPrediction(
+                    mapOf(
+                        "Caldwell/Central" to DestinationPrediction(
                             destination = "Caldwell/Central",
                             arrivalTimes = listOf(
                                 ArrivalTime(timeInMinutes = 4, realTimeTracked = true),
@@ -77,11 +77,11 @@ class EntrypointTest() {
 
         val result = Json.decodeFromString<PredictionResponse>(outputWriter.toString())
         val expectedResponse = PredictionResponse(
-            listOf(
-                RoutePrediction(
+            mapOf(
+                "22" to RoutePrediction(
                     route = "22",
-                    destinationPrediction = listOf(
-                        DestinationPrediction(
+                    destinationPrediction = mapOf(
+                        "Harrison" to DestinationPrediction(
                             destination = "Harrison",
                             arrivalTimes = listOf(
                                 ArrivalTime(timeInMinutes = 2, realTimeTracked = true),
@@ -89,7 +89,7 @@ class EntrypointTest() {
                                 ArrivalTime(timeInMinutes = 25, realTimeTracked = true)
                             )
                         ),
-                        DestinationPrediction(
+                        "Howard" to DestinationPrediction(
                             destination = "Howard",
                             arrivalTimes = listOf(
                                 ArrivalTime(timeInMinutes = 11, realTimeTracked = true),
@@ -115,11 +115,11 @@ class EntrypointTest() {
         val result = Json.decodeFromString<PredictionResponse>(outputWriter.toString())
 
         val expectedResponse = PredictionResponse(
-            listOf(
-                RoutePrediction(
+            mapOf(
+                "50" to RoutePrediction(
                     route = "50",
-                    listOf(
-                        DestinationPrediction(
+                    mapOf(
+                        "35th/Archer Orange Line" to DestinationPrediction(
                             destination = "35th/Archer Orange Line",
                             arrivalTimes = listOf(
                                 ArrivalTime(timeInMinutes = 9, realTimeTracked = true),
@@ -128,10 +128,10 @@ class EntrypointTest() {
                         )
                     )
                 ),
-                RoutePrediction(
+                "84" to RoutePrediction(
                     route = "84",
-                    listOf(
-                        DestinationPrediction(
+                    mapOf(
+                        "Caldwell/Central" to DestinationPrediction(
                             destination = "Caldwell/Central",
                             arrivalTimes = listOf(ArrivalTime(timeInMinutes = 29, realTimeTracked = true))
                         )
@@ -153,11 +153,11 @@ class EntrypointTest() {
         val result = Json.decodeFromString<PredictionResponse>(outputWriter.toString())
 
         val expectedResponse = PredictionResponse(
-            listOf(
-                RoutePrediction(
+            mapOf(
+                "50" to RoutePrediction(
                     route = "50",
-                    listOf(
-                        DestinationPrediction(
+                    mapOf(
+                        "35th/Archer Orange Line" to DestinationPrediction(
                             destination = "35th/Archer Orange Line",
                             arrivalTimes = listOf(
                                 ArrivalTime(timeInMinutes = 9, realTimeTracked = true),
@@ -166,10 +166,10 @@ class EntrypointTest() {
                         )
                     )
                 ),
-                RoutePrediction(
+                "84" to RoutePrediction(
                     route = "84",
-                    listOf(
-                        DestinationPrediction(
+                    mapOf(
+                        "Caldwell/Central" to DestinationPrediction(
                             destination = "Caldwell/Central",
                             arrivalTimes = listOf(ArrivalTime(timeInMinutes = 29, realTimeTracked = true))
                         )
@@ -191,20 +191,20 @@ class EntrypointTest() {
         val result = Json.decodeFromString<PredictionResponse>(outputWriter.toString())
 
         val expectedResponse = PredictionResponse(
-            listOf(
-                RoutePrediction(
+            mapOf(
+                "50" to RoutePrediction(
                     "50",
-                    listOf(
-                        DestinationPrediction(
+                    mapOf(
+                        "35th/Archer Orange Line" to DestinationPrediction(
                             "35th/Archer Orange Line",
                             listOf(ArrivalTime(9, true), ArrivalTime(28, true))
                         )
                     )
                 ),
-                RoutePrediction(
+                "84" to RoutePrediction(
                     "84",
-                    listOf(
-                        DestinationPrediction(
+                    mapOf(
+                        "Caldwell/Central" to DestinationPrediction(
                             "Caldwell/Central",
                             listOf(ArrivalTime(29, true))
                         )
@@ -226,11 +226,11 @@ class EntrypointTest() {
         val result = Json.decodeFromString<PredictionResponse>(outputWriter.toString())
 
         val expectedResponse = PredictionResponse(
-            listOf(
-                RoutePrediction(
+            mapOf(
+                "147" to RoutePrediction(
                     route = "147",
-                    listOf(
-                        DestinationPrediction(
+                    mapOf(
+                        "Congress Plaza" to DestinationPrediction(
                             destination = "Congress Plaza",
                             arrivalTimes = listOf(
                                 ArrivalTime(timeInMinutes = 11, realTimeTracked = true),
@@ -255,11 +255,11 @@ class EntrypointTest() {
         val result = Json.decodeFromString<PredictionResponse>(outputWriter.toString())
 
         val expectedResponse = PredictionResponse(
-            listOf(
-                RoutePrediction(
+            mapOf(
+                "84" to RoutePrediction(
                     route = "84",
-                    listOf(
-                        DestinationPrediction(
+                    mapOf(
+                        "Caldwell/Central" to DestinationPrediction(
                             destination = "Caldwell/Central",
                             arrivalTimes = listOf(
                                 ArrivalTime(timeInMinutes = null, realTimeTracked = true, delayed = true),
@@ -283,11 +283,11 @@ class EntrypointTest() {
         val result = Json.decodeFromString<PredictionResponse>(outputWriter.toString())
 
         val expectedResponse = PredictionResponse(
-            listOf(
-                RoutePrediction(
+            mapOf(
+                "Red" to RoutePrediction(
                     route = "Red",
-                    listOf(
-                        DestinationPrediction(
+                    mapOf(
+                        "Howard" to DestinationPrediction(
                             destination = "Howard",
                             arrivalTimes = listOf(
                                 ArrivalTime(timeInMinutes = 2, realTimeTracked = true),
@@ -299,7 +299,7 @@ class EntrypointTest() {
                                 ArrivalTime(timeInMinutes = 50, realTimeTracked = true)
                             )
                         ),
-                        DestinationPrediction(
+                        "95th/Dan Ryan" to DestinationPrediction(
                             destination = "95th/Dan Ryan",
                             arrivalTimes = listOf(
                                 ArrivalTime(timeInMinutes = 4, realTimeTracked = true),
@@ -323,11 +323,11 @@ class EntrypointTest() {
         val result = Json.decodeFromString<PredictionResponse>(outputWriter.toString())
 
         val expectedResponse = PredictionResponse(
-            listOf(
-                RoutePrediction(
+            mapOf(
+                "Red" to RoutePrediction(
                     route = "Red",
-                    listOf(
-                        DestinationPrediction(
+                    mapOf(
+                        "Howard" to DestinationPrediction(
                             destination = "Howard",
                             arrivalTimes = listOf(
                                 ArrivalTime(timeInMinutes = 2, realTimeTracked = true, delayed = true),
@@ -350,11 +350,11 @@ class EntrypointTest() {
         val result = Json.decodeFromString<PredictionResponse>(outputWriter.toString())
 
         val expectedResponse = PredictionResponse(
-            listOf(
-                RoutePrediction(
+            mapOf(
+                "Red" to RoutePrediction(
                     route = "Red",
-                    listOf(
-                        DestinationPrediction(
+                    mapOf(
+                        "Howard" to DestinationPrediction(
                             destination = "Howard",
                             arrivalTimes = listOf(
                                 ArrivalTime(timeInMinutes = 2, realTimeTracked = false),
@@ -380,11 +380,11 @@ class EntrypointTest() {
         val result = Json.decodeFromString<PredictionResponse>(outputWriter.toString())
 
         val expectedResponse = PredictionResponse(
-            listOf(
-                RoutePrediction(
+            mapOf(
+                "Red" to RoutePrediction(
                     route = "Red",
-                    listOf(
-                        DestinationPrediction(
+                    mapOf(
+                        "Howard" to DestinationPrediction(
                             destination = "Howard",
                             arrivalTimes = listOf(
                                 ArrivalTime(timeInMinutes = 2, realTimeTracked = true),
@@ -396,7 +396,7 @@ class EntrypointTest() {
                                 ArrivalTime(timeInMinutes = 50, realTimeTracked = true)
                             )
                         ),
-                        DestinationPrediction(
+                        "95th/Dan Ryan" to DestinationPrediction(
                             destination = "95th/Dan Ryan",
                             arrivalTimes = listOf(
                                 ArrivalTime(timeInMinutes = 4, realTimeTracked = true),
@@ -405,14 +405,14 @@ class EntrypointTest() {
                         )
                     )
                 ),
-                RoutePrediction(
+                "Brn" to RoutePrediction(
                     route = "Brn",
-                    listOf(
-                        DestinationPrediction(
+                    mapOf(
+                        "Loop" to DestinationPrediction(
                             destination = "Loop",
                             arrivalTimes = listOf(ArrivalTime(timeInMinutes = 5, realTimeTracked = true))
                         ),
-                        DestinationPrediction(
+                        "Kimball" to DestinationPrediction(
                             destination = "Kimball",
                             arrivalTimes = listOf(ArrivalTime(timeInMinutes = 16, realTimeTracked = true))
                         )
@@ -436,11 +436,11 @@ class EntrypointTest() {
         val result = Json.decodeFromString<PredictionResponse>(outputWriter.toString())
 
         val expectedResponse = PredictionResponse(
-            listOf(
-                RoutePrediction(
+            mapOf(
+                "Red" to RoutePrediction(
                     route = "Red",
-                    listOf(
-                        DestinationPrediction(
+                    mapOf(
+                        "Howard" to DestinationPrediction(
                             destination = "Howard",
                             arrivalTimes = listOf(
                                 ArrivalTime(timeInMinutes = 2, realTimeTracked = true),
@@ -452,7 +452,7 @@ class EntrypointTest() {
                                 ArrivalTime(timeInMinutes = 50, realTimeTracked = true)
                             )
                         ),
-                        DestinationPrediction(
+                        "95th/Dan Ryan" to DestinationPrediction(
                             destination = "95th/Dan Ryan",
                             arrivalTimes = listOf(
                                 ArrivalTime(timeInMinutes = 4, realTimeTracked = true),
@@ -461,10 +461,10 @@ class EntrypointTest() {
                         )
                     )
                 ),
-                RoutePrediction(
+                "84" to RoutePrediction(
                     route = "84",
-                    listOf(
-                        DestinationPrediction(
+                    mapOf(
+                        "Caldwell/Central" to DestinationPrediction(
                             destination = "Caldwell/Central",
                             arrivalTimes = listOf(
                                 ArrivalTime(timeInMinutes = 4, realTimeTracked = true),
