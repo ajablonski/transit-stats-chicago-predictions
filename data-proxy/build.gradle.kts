@@ -32,7 +32,7 @@ dependencies {
     testImplementation("io.mockk:mockk:1.13.5")
     testImplementation("org.jetbrains.kotlin:kotlin-reflect:1.9.0")
 
-    invoker("com.google.cloud.functions.invoker:java-function-invoker:1.2.1")
+    invoker("com.google.cloud.functions.invoker:java-function-invoker:1.3.0")
 }
 
 
