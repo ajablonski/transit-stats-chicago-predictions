@@ -40,7 +40,7 @@ class EntrypointTest() {
 
     @Test
     fun shouldRetrieveBusSingleRouteResponse() {
-        setupBusResponse(listOf("11474"), "samples/84.json")
+        setupBusResponse(listOf("11476"), "samples/84.json")
 
         val request = buildHttpRequest(listOf("84"))
         entrypoint.service(request, response)
@@ -106,7 +106,7 @@ class EntrypointTest() {
 
     @Test
     fun shouldRetrieveBusMultiRouteResponse() {
-        setupBusResponse(listOf("1802", "11474"), "samples/50_84_combined.json")
+        setupBusResponse(listOf("1802", "11476"), "samples/50_84_combined.json")
 
         val request = buildHttpRequest(listOf("50", "84"))
         entrypoint.service(request, response)
@@ -144,7 +144,7 @@ class EntrypointTest() {
 
     @Test
     fun shouldSplitCommaSeparatedParameters() {
-        setupBusResponse(listOf("1802", "11474"), "samples/50_84_combined.json")
+        setupBusResponse(listOf("1802", "11476"), "samples/50_84_combined.json")
 
         val request = buildHttpRequest(listOf("50,84"))
         entrypoint.service(request, response)
@@ -182,7 +182,7 @@ class EntrypointTest() {
 
     @Test
     fun shouldRetrieveBusMultiRouteMultiStopResponse() {
-        setupBusResponse(listOf("1802", "11474"), "samples/50_84_combined.json")
+        setupBusResponse(listOf("1802", "11476"), "samples/50_84_combined.json")
 
         val request = buildHttpRequest(listOf("50", "84"))
         entrypoint.service(request, response)
@@ -246,7 +246,7 @@ class EntrypointTest() {
 
     @Test
     fun shouldRetrieveBusDelayedResponse() {
-        setupBusResponse(listOf("11474"), "samples/84_delayed.json")
+        setupBusResponse(listOf("11476"), "samples/84_delayed.json")
 
         val request = buildHttpRequest(listOf("84"))
         entrypoint.service(request, response)
@@ -426,7 +426,7 @@ class EntrypointTest() {
     @Test
     fun testRetrieveTrainAndBusResponse() {
         setupTrainResponse(listOf("41380"), listOf("samples/Red.json"))
-        setupBusResponse(listOf("11474"), "samples/84.json")
+        setupBusResponse(listOf("11476"), "samples/84.json")
 
         val request = buildHttpRequest(listOf("Red", "84"))
 

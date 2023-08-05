@@ -126,10 +126,10 @@ class Entrypoint(
 
     companion object Entrypoint {
         private val busRouteToStopMap: Map<String, List<String>> = mapOf(
-            "84" to listOf("11474"),
+            "84" to listOf("11476"),
             "22" to listOf("14792", "14786"),
             "50" to listOf("1802"),
-            "92" to listOf("5425"),
+            "92" to listOf("4796"),
             "36" to listOf("5338"),
             "147" to listOf("1038"),
             "136" to listOf("1038")
