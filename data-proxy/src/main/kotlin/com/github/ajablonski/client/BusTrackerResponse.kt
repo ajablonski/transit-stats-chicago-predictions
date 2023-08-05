@@ -12,7 +12,7 @@ data class BusTrackerResponse(
 @Serializable
 data class BusTimeResponse(
     @SerialName("prd")
-    val predictions: List<Prediction>
+    val predictions: List<Prediction> = emptyList()
 )
 
 @Serializable

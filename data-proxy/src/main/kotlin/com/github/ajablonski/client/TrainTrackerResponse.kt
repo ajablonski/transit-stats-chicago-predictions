@@ -13,7 +13,7 @@ data class TrainTrackerResponse(
 @Serializable
 data class CtaData(
     @SerialName("eta")
-    val etas: List<TrainEta>
+    val etas: List<TrainEta> = emptyList()
 )
 
 /*
