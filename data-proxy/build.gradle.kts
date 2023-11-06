@@ -30,7 +30,7 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.10.0")
     testImplementation("org.assertj:assertj-core:3.24.2")
     testImplementation("io.mockk:mockk:1.13.5")
-    testImplementation("org.jetbrains.kotlin:kotlin-reflect:1.9.0")
+    testImplementation("org.jetbrains.kotlin:kotlin-reflect:1.9.20")
 
     invoker("com.google.cloud.functions.invoker:java-function-invoker:1.3.0")
 }
