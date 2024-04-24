@@ -19,7 +19,7 @@ import java.net.http.HttpClient
 import java.net.http.HttpResponse.BodyHandler
 import java.net.http.HttpResponse as JHttpResponse
 
-class EntrypointTest() {
+class EntrypointTest {
     private val outputWriter = StringWriter()
     private val response = mockk<HttpResponse>(relaxed = true) {
         every { writer }.returns(BufferedWriter(outputWriter))
