@@ -3,7 +3,7 @@ steps:
     id: build
     entrypoint: gradle
     args: ['-p', 'data-proxy', 'shadowJar']
-  - name: gcr.io/google.com/cloudsdktool/cloud-sdk:426.0.0-alpine
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk:473.0.0-alpine
     args:
       - gcloud
       - functions
