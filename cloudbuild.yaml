@@ -16,8 +16,7 @@ steps:
       - --region=us-central1
       - --trigger-http
       - --runtime=java21
-      - --max-instances=1
-      - --concurrency=10
+      - --max-instances=2
       - --set-secrets=/etc/secrets/gtfs_secrets.json=gtfs-secrets-cta:1
     waitFor:
       - build
