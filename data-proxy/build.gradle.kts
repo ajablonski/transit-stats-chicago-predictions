@@ -37,7 +37,7 @@ dependencies {
 
 
 kotlin {
-    jvmToolchain(JavaVersion.VERSION_17.majorVersion.toInt())
+    jvmToolchain(JavaVersion.VERSION_21.majorVersion.toInt())
 }
 
 tasks.withType<DependencyUpdatesTask> {

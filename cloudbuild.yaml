@@ -1,5 +1,5 @@
 steps:
-  - name: gradle:8.7-jdk17-alpine
+  - name: gradle:8.7-jdk21-alpine
     id: build
     entrypoint: gradle
     args: ['-p', 'data-proxy', 'shadowJar']
@@ -15,7 +15,7 @@ steps:
       - --source=data-proxy/build/libs
       - --region=us-central1
       - --trigger-http
-      - --runtime=java17
+      - --runtime=java21
       - --max-instances=1
       - --set-secrets=/etc/secrets/gtfs_secrets.json=gtfs-secrets-cta:1
     waitFor:
