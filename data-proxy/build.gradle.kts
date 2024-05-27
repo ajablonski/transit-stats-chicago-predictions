@@ -28,7 +28,7 @@ dependencies {
     testImplementation("com.google.cloud.functions:functions-framework-api:1.1.0")
     testImplementation("org.junit.jupiter:junit-jupiter:5.10.2")
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.10.2")
-    testImplementation("org.assertj:assertj-core:3.25.3")
+    testImplementation("org.assertj:assertj-core:3.26.0")
     testImplementation("io.mockk:mockk:1.13.11")
     testImplementation("org.jetbrains.kotlin:kotlin-reflect")
 
