@@ -18,7 +18,7 @@ dependencies {
     compileOnly("com.google.cloud.functions:functions-framework-api:1.1.0")
 
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
-    implementation(platform("com.google.cloud:libraries-bom:26.39.0"))
+    implementation(platform("com.google.cloud:libraries-bom:26.41.0"))
 
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
     implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.5.0")
