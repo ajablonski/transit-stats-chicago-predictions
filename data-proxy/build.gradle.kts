@@ -21,7 +21,7 @@ dependencies {
     implementation(platform("com.google.cloud:libraries-bom:26.39.0"))
 
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
-    implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.5.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.1")
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
     implementation("org.apache.httpcomponents.client5:httpclient5:5.3.1")
 
