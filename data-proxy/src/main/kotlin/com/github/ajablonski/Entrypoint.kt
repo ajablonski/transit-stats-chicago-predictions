@@ -1,7 +1,6 @@
 package com.github.ajablonski
 
 import com.github.ajablonski.client.BusTrackerResponse
-import com.github.ajablonski.client.Prediction
 import com.github.ajablonski.client.TrainTrackerResponse
 import com.github.ajablonski.model.ArrivalTime
 import com.github.ajablonski.model.DestinationPrediction
@@ -10,19 +9,20 @@ import com.github.ajablonski.server.PredictionResponse
 import com.google.cloud.functions.HttpFunction
 import com.google.cloud.functions.HttpRequest
 import com.google.cloud.functions.HttpResponse
+import kotlinx.datetime.Clock
 import kotlinx.datetime.toJavaLocalDateTime
-import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.apache.hc.core5.http.ContentType
 import org.apache.hc.core5.net.URIBuilder
-import java.net.http.HttpRequest as JHttpRequest
-import java.net.http.HttpResponse as JHttpResponse
 import java.net.http.HttpClient
 import java.time.temporal.ChronoUnit
+import java.net.http.HttpRequest as JHttpRequest
+import java.net.http.HttpResponse as JHttpResponse
 
 class Entrypoint(
     private val httpClient: HttpClient = HttpClient.newHttpClient(),
-    private val keyProvider: KeyProvider = FileSecretKeyProvider()
+    private val keyProvider: KeyProvider = FileSecretKeyProvider(),
+    private val clock: Clock = Clock.System,
 ) : HttpFunction {
 
     private val json = Json { ignoreUnknownKeys = true }
@@ -46,7 +46,8 @@ class Entrypoint(
             writer.write(
                 json.encodeToString(
                     PredictionResponse(
-                        predictedTrainArrivalTimes + predictedBusArrivalTimes
+                        predictions = predictedTrainArrivalTimes + predictedBusArrivalTimes,
+                        currentTime = clock.now(),
                     )
                 )
             )

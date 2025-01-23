@@ -8,6 +8,10 @@ import com.google.cloud.functions.HttpRequest
 import com.google.cloud.functions.HttpResponse
 import io.mockk.every
 import io.mockk.mockk
+import kotlinx.datetime.Clock
+import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.toInstant
 import kotlinx.serialization.json.Json
 import org.apache.hc.core5.net.URIBuilder
 import org.assertj.core.api.Assertions.assertThat
@@ -31,11 +35,15 @@ class EntrypointTest {
         every { getBusTrackerApiKey() }.returns(busTrackerKey)
         every { getTrainTrackerApiKey() }.returns(trainTrackerKey)
     }
+    private val mockClockInstant = LocalDateTime(2025, 1, 15, 4, 2, 0, 0).toInstant(TimeZone.UTC)
+    private val mockClock = mockk<Clock> {
+        every { now() } returns mockClockInstant
+    }
     private lateinit var entrypoint: Entrypoint
 
     @BeforeEach
     fun beforeEach() {
-        entrypoint = Entrypoint(httpClient, keyProvider)
+        entrypoint = Entrypoint(httpClient, keyProvider, mockClock)
     }
 
     @Test
@@ -62,7 +70,8 @@ class EntrypointTest {
                         )
                     )
                 )
-            )
+            ),
+            mockClockInstant
         )
         assertThat(result).isEqualTo(expectedResponse)
     }
@@ -98,7 +107,8 @@ class EntrypointTest {
                         )
                     )
                 )
-            )
+            ),
+            mockClockInstant
         )
 
         assertThat(result).isEqualTo(expectedResponse)
@@ -137,7 +147,8 @@ class EntrypointTest {
                         )
                     )
                 )
-            )
+            ),
+            mockClockInstant
         )
         assertThat(result).isEqualTo(expectedResponse)
     }
@@ -175,7 +186,8 @@ class EntrypointTest {
                         )
                     )
                 )
-            )
+            ),
+            mockClockInstant
         )
         assertThat(result).isEqualTo(expectedResponse)
     }
@@ -210,7 +222,8 @@ class EntrypointTest {
                         )
                     )
                 )
-            )
+            ),
+            mockClockInstant
         )
         assertThat(result).isEqualTo(expectedResponse)
     }
@@ -239,7 +252,8 @@ class EntrypointTest {
                         )
                     )
                 )
-            )
+            ),
+            mockClockInstant
         )
         assertThat(result).isEqualTo(expectedResponse)
     }
@@ -268,7 +282,8 @@ class EntrypointTest {
                         )
                     )
                 )
-            )
+            ),
+            mockClockInstant
         )
         assertThat(result).isEqualTo(expectedResponse)
     }
@@ -308,7 +323,8 @@ class EntrypointTest {
                         )
                     )
                 )
-            )
+            ),
+            mockClockInstant
         )
         assertThat(result).isEqualTo(expectedResponse)
     }
@@ -335,7 +351,8 @@ class EntrypointTest {
                         )
                     )
                 )
-            )
+            ),
+            mockClockInstant
         )
         assertThat(result).isEqualTo(expectedResponse)
     }
@@ -362,7 +379,8 @@ class EntrypointTest {
                         )
                     )
                 )
-            )
+            ),
+            mockClockInstant
         )
         assertThat(result).isEqualTo(expectedResponse)
     }
@@ -418,7 +436,8 @@ class EntrypointTest {
                         )
                     )
                 )
-            )
+            ),
+            mockClockInstant
         )
         assertThat(result).isEqualTo(expectedResponse)
     }
@@ -473,7 +492,8 @@ class EntrypointTest {
                         )
                     )
                 )
-            )
+            ),
+            mockClockInstant
         )
         assertThat(result).isEqualTo(expectedResponse)
     }
