@@ -33,7 +33,7 @@ dependencies {
     testImplementation("org.jetbrains.kotlin:kotlin-reflect")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
-    invoker("com.google.cloud.functions.invoker:java-function-invoker:1.4.0")
+    invoker("com.google.cloud.functions.invoker:java-function-invoker:1.4.1")
 }
 
 
