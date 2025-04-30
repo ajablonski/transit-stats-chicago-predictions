@@ -512,7 +512,7 @@ class EntrypointTest {
                 match {
                     val uri = it.uri()
                     val parsedUri = URIBuilder(it.uri())
-                    uri.path == "/bustime/api/v2/getpredictions"
+                    uri.path == "/bustime/api/v3/getpredictions"
                             && uri.host == "www.ctabustracker.com"
                             && uri.scheme == "https"
                             && parsedUri.getFirstQueryParam("stpid").value == stopIds.joinToString(",")
