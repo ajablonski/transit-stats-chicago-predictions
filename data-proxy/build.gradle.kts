@@ -26,8 +26,8 @@ dependencies {
     implementation("org.apache.httpcomponents.client5:httpclient5:5.5")
 
     testImplementation("com.google.cloud.functions:functions-framework-api:1.1.4")
-    testImplementation("org.junit.jupiter:junit-jupiter:5.13.0")
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.13.0")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.13.1")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.13.1")
     testImplementation("org.assertj:assertj-core:3.27.3")
     testImplementation("io.mockk:mockk:1.14.2")
     testImplementation("org.jetbrains.kotlin:kotlin-reflect")
