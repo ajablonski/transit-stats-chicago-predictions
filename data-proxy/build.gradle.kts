@@ -1,8 +1,8 @@
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 
 plugins {
-    kotlin("jvm") version "2.2.10"
-    kotlin("plugin.serialization") version "2.2.10"
+    kotlin("jvm") version "2.2.20"
+    kotlin("plugin.serialization") version "2.2.20"
     id("com.github.ben-manes.versions") version "0.53.0"
     id("com.github.johnrengelman.shadow") version "8.1.1"
 }
@@ -23,12 +23,12 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0")
     implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.7.1-0.6.x-compat")
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
-    implementation("org.apache.httpcomponents.client5:httpclient5:5.5")
+    implementation("org.apache.httpcomponents.client5:httpclient5:5.5.1")
 
     testImplementation("com.google.cloud.functions:functions-framework-api:1.1.4")
     testImplementation("org.junit.jupiter:junit-jupiter:5.13.4")
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.13.4")
-    testImplementation("org.assertj:assertj-core:3.27.4")
+    testImplementation("org.assertj:assertj-core:3.27.6")
     testImplementation("io.mockk:mockk:1.14.5")
     testImplementation("org.jetbrains.kotlin:kotlin-reflect")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
