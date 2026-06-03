@@ -29,7 +29,7 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter:6.0.1")
     testImplementation("org.junit.jupiter:junit-jupiter-api:6.0.1")
     testImplementation("org.assertj:assertj-core:3.27.7")
-    testImplementation("io.mockk:mockk:1.14.9")
+    testImplementation("io.mockk:mockk:1.14.11")
     testImplementation("org.jetbrains.kotlin:kotlin-reflect")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
