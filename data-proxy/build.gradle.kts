@@ -15,7 +15,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly("com.google.cloud.functions:functions-framework-api:1.1.4")
+    compileOnly("com.google.cloud.functions:functions-framework-api:2.0.1")
 
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
     implementation(platform("com.google.cloud:libraries-bom:26.71.0"))
@@ -25,7 +25,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
     implementation("org.apache.httpcomponents.client5:httpclient5:5.5.1")
 
-    testImplementation("com.google.cloud.functions:functions-framework-api:1.1.4")
+    testImplementation("com.google.cloud.functions:functions-framework-api:2.0.1")
     testImplementation("org.junit.jupiter:junit-jupiter:6.0.1")
     testImplementation("org.junit.jupiter:junit-jupiter-api:6.0.1")
     testImplementation("org.assertj:assertj-core:3.27.7")
